@@ -1,0 +1,61 @@
+/* Global Styles */
+
+@font-face {
+    font-family: IRANSans;
+    src: url("./font/IRANSans.ttf");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: IRANSans;
+}
+
+body {
+    overflow: hidden;
+}
+
+html {
+    --color-1: white;
+    --color-2: black;
+}
+
+input::placeholder {
+    font-size: 0.8rem;
+}
+
+.toast {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+
+/* Media Queries */
+
+@media screen and (min-width: 576px) {
+    html {
+        font-size: 17px;
+    }
+    .toast {
+        width: 320px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    html {
+        font-size: 19px;
+    }
+    button {
+        cursor: pointer;
+    }
+}

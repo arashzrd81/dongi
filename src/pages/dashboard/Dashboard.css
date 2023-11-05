@@ -1,0 +1,26 @@
+.dashboard-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-container .dashboard-wrapper {
+    display: flex;
+    column-gap: 3rem;
+}
+
+.dashboard-wrapper button {
+    width: 6.5rem;
+    height: 6.5rem;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--color-1);
+    background-color: var(--color-2);
+    box-shadow: 0 0 5px var(--color-2);
+}

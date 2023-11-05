@@ -1,0 +1,47 @@
+.login-container,
+.login-container .login-wrapper,
+.login-wrapper form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container {
+    height: 100vh;
+    justify-content: center;
+}
+
+.login-container .login-wrapper {
+    width: min(80%, 350px);
+    row-gap: 2rem;
+}
+
+.login-wrapper h1 {
+    font-size: 1.05rem;
+}
+
+.login-wrapper form {
+    width: 100%;
+    row-gap: 1rem;
+}
+
+.login-wrapper form * {
+    width: 85%;
+    padding: 0.5rem 0.8rem;
+    border: 2px solid var(--color-2);
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.login-wrapper form input {
+    border-radius: 10px;
+}
+
+.login-wrapper form button {
+    border-radius: 20px;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--color-1);
+    background-color: var(--color-2);
+    box-shadow: 0 0 5px var(--color-2);
+}
