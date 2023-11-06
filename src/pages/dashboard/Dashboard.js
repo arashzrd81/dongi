@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import "./Dashboard.css";
 
@@ -7,39 +8,44 @@ const elements = [".creditor-btn", ".debtor-btn"];
 
 const Dashboard = () => {
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         const handleTransition = () => {
-            elements.forEach((element, index) => {
-                gsap.from(element, {
-                    duration: 1.2,
+            elements.forEach(element => {
+                gsap.to(element, {
+                    duration: 1,
                     ease: "power1.out",
-                    x: index ? "-100vw" : "100vw",
-                    opacity: 0
+                    y: 0
                 });
             });
         };
         handleTransition();
     }, []);
 
-    const handleClick = async e => {
+    const handleSelect = async e => {
         let temp = [...elements];
         temp = e.target.className === "creditor-btn" ? [...temp] : [...temp.reverse()];
         temp.forEach((element, index) => {
             gsap.to(element, {
-                duration: 0.8,
+                duration: 0.75,
                 delay: index / 3,
                 ease: "power1.in",
                 y: "-100vh",
                 opacity: 0
             });
         });
+        await new Promise(r => setTimeout(r, 1000));
+        if (e.target.className === "creditor-btn") {
+            navigate("/dashboard/create-invoice");
+        }
     };
 
     return (
         <main className="dashboard-container">
             <section className="dashboard-wrapper">
-                <button className="creditor-btn" onClick={handleClick}>بخش طلبکاری</button>
-                <button className="debtor-btn" onClick={handleClick}>بخش بدهکاری</button>
+                <button className="creditor-btn" onClick={handleSelect}>بخش طلبکاری</button>
+                <button className="debtor-btn" onClick={handleSelect}>بخش بدهکاری</button>
             </section>
         </main>
     );

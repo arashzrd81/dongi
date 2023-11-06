@@ -18,6 +18,7 @@
 
 .login-wrapper h1 {
     font-size: 1.05rem;
+    transform: translateY(-100vh);
 }
 
 .login-wrapper form {
@@ -27,21 +28,17 @@
 
 .login-wrapper form * {
     width: 85%;
-    padding: 0.5rem 0.8rem;
-    border: 2px solid var(--color-2);
-    outline: none;
-    font-size: 0.9rem;
 }
 
-.login-wrapper form input {
-    border-radius: 10px;
+.login-wrapper form input:nth-child(1) {
+    transform: translateX(100vw);
+}
+
+.login-wrapper form input:nth-child(2) {
+    transform: translateX(-100vw);
 }
 
 .login-wrapper form button {
-    border-radius: 20px;
     margin-top: 1rem;
-    font-weight: bold;
-    color: var(--color-1);
-    background-color: var(--color-2);
-    box-shadow: 0 0 5px var(--color-2);
+    transform: translateY(100vh);
 }

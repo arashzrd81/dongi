@@ -21,8 +21,31 @@ html {
     --color-2: black;
 }
 
+input,
+button {
+    padding: 0.6rem 0.8rem;
+    border: 2px solid var(--color-2);
+    outline: none;
+    font-size: 0.9rem;
+}
+
+input {
+    border-radius: 10px;
+}
+
 input::placeholder {
     font-size: 0.8rem;
+}
+
+button {
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--color-1);
+    background-color: var(--color-2);
+    box-shadow: 0 0 5px var(--color-2);
 }
 
 .toast {
@@ -41,7 +64,7 @@ input::placeholder {
         font-size: 17px;
     }
     .toast {
-        width: 320px;
+        width: 350px;
     }
 }
 

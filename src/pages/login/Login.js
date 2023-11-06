@@ -12,17 +12,17 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    
     const navigate = useNavigate();
 
     useEffect(() => {
         const handleTransition = () => {
             elements.forEach((element, index) => {
-                gsap.from(element, {
-                    duration: 1.2,
+                gsap.to(element, {
+                    duration: 1,
                     delay: 1.5,
                     ease: "power1.out",
-                    [index === 0 || index === 3 ? "y" : "x"]: positions[index],
-                    opacity: 0
+                    [index === 0 || index === 3 ? "y" : "x"]: 0
                 });
             });
         };
@@ -32,18 +32,17 @@ const Login = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         if (!username || !password) {
-            showToast("!لطفا همه‌ی فیلدها رو پر کن");
+            showToast("!لطفا همه‌ی فیلدها رو پر کنید");
         } else {
             localStorage.setItem("userAuth", "true");
             elements.forEach((element, index) => {
                 gsap.to(element, {
-                    duration: 0.8,
+                    duration: 0.75,
                     ease: "power1.in",
-                    [index === 0 || index === 3 ? "y" : "x"]: positions[index],
-                    opacity: 0
+                    [index === 0 || index === 3 ? "y" : "x"]: positions[index]
                 });
             });
-            await new Promise(r => setTimeout(r, 1500));
+            await new Promise(r => setTimeout(r, 1000));
             navigate("/dashboard", {
                 replace: true
             });
@@ -59,6 +58,7 @@ const Login = () => {
                         type="text"
                         value={username}
                         onChange={e => setUsername(e.target.value)}
+                        autoFocus={true}
                         placeholder="نام کاربری"
                     />
                     <input
