@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Select from "react-select";
+import Invoice from "../../components/invoice/Invoice";
 import { showToast } from "../../helper/showToast";
 import "./CreateInvoice.css";
 
@@ -32,7 +33,8 @@ const users = [
 const CreateInvoice = () => {
 
     const [count, setCount] = useState(0);
-    
+    const [showInvoice, setShowInvoice] = useState(false);
+
     const [items, setItems] = useState("");
     const [date, setDate] = useState("");
     const [cost, setCost] = useState("");
@@ -98,6 +100,13 @@ const CreateInvoice = () => {
                     y: "-100vh",
                     opacity: 0
                 });
+                gsap.to(".my-invoices-btn", {
+                    duration: 0.75,
+                    ease: "power1.in",
+                    opacity: 0
+                });
+                await new Promise(r => setTimeout(r, 2000));
+                setShowInvoice(true);
             } else {
                 if (count === 0 || count === 1) {
                     refs[count].current.focus();
@@ -130,118 +139,124 @@ const CreateInvoice = () => {
     };
 
     return (
-        <main className="create-invoice-container">
-            <button className="my-invoices-btn">
-                <i className="fa-solid fa-clipboard-list"></i>
-                <span>فاکتورهای من</span>
-            </button>
-            <section className="create-invoice-wrapper">
-                <form onSubmit={handleContinue}>
-                    <label>اقلامی که خریدی:</label>
-                    <input
-                        ref={itemsInputRef}
-                        className="input"
-                        type="text"
-                        value={items}
-                        onChange={e => setItems(e.target.value)}
-                        placeholder="مثلا کیک و نوشابه"
-                    />
-                </form>
-                <form onSubmit={handleContinue}>
-                    <label>تاریخ خریدی که انجام دادی:</label>
-                    <input
-                        ref={dateInputRef}
-                        className="input"
-                        type="text"
-                        value={date}
-                        onChange={e => setDate(e.target.value)}
-                        placeholder="مثلا 1402/8/15"
-                    />
-                </form>
-                <form onSubmit={handleContinue}>
-                    <label>مجموع هزینه‌ای که کردی: (به تومان)</label>
-                    <input
-                        ref={costInputRef}
-                        className="input"
-                        type="text"
-                        value={cost}
-                        onChange={e => setCost(e.target.value)}
-                        placeholder="مثلا 275000"
-                    />
-                </form>
-                <form onSubmit={handleContinue}>
-                    <label>کسایی که باید دونگ بدن:</label>
-                    <Select
-                        className="input"
-                        value={members}
-                        options={users}
-                        onChange={setMembers}
-                        placeholder=""
-                        isMulti={true}
-                        isSearchable={false}
-                        styles={{
-                            control: () => ({
-                                padding: "0.4rem",
-                                border: "2px solid var(--color-2)",
-                                borderRadius: "10px"
-                            }),
-                            indicatorsContainer: () => ({
-                                display: "none"
-                            }),
-                            menu: () => ({
-                                position: "absolute"
-                            }),
-                            multiValue: () => ({
-                                width: "fit-content",
-                                paddingRight: "5px",
-                                paddingLeft: "10px",
-                                borderRadius: "10px",
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                alignItems: "center",
-                                columnGap: "5px",
-                                fontWeight: "bold",
-                                color: "var(--color-1)",
-                                backgroundColor: "var(--color-2)"
-                            }),
-                            multiValueLabel: () => ({
-                                width: "fit-content",
-                                fontSize: "0.8rem"
-                            }),
-                            multiValueRemove: () => ({
-                                width: "fit-content",
-                                marginTop: "5px",
-                                cursor: "pointer"
-                            }),
-                            noOptionsMessage: () => ({
-                                display: "none"
-                            }),
-                            option: (defaultStyles, state) => ({
-                                ...defaultStyles,
-                                padding: "0.6rem",
-                                textAlign: "left",
-                                cursor: "pointer",
-                                fontSize: "0.8rem",
-                                color: state.isFocused ? "var(--color-1)" : "var(--color-2)",
-                                backgroundColor: state.isFocused ? "var(--color-2)" : "var(--color-1)",
-                                ":hover": {
-                                    color: "var(--color-1)",
-                                    backgroundColor: "var(--color-2)"
-                                }
-                            }),
-                            valueContainer: () => ({
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                flexWrap: "wrap",
-                                gap: "5px"
-                            })
-                        }}
-                    />
-                    <button className="see-invoice-btn" onClick={handleContinue}>دیدن فاکتور</button>
-                </form>
-                <button className="continue-btn" onClick={handleContinue}>ادامه</button>
-            </section>
-        </main>
+        <>
+            {
+                showInvoice ?
+                <Invoice items={items} date={date} cost={cost} members={members} /> :
+                <main className="create-invoice-container">
+                    <button className="my-invoices-btn">
+                        <i className="fa-solid fa-clipboard-list"></i>
+                        <span>فاکتورهای من</span>
+                    </button>
+                    <section className="create-invoice-wrapper">
+                        <form onSubmit={handleContinue}>
+                            <label>اقلامی که خریدی:</label>
+                            <input
+                                ref={itemsInputRef}
+                                className="input"
+                                type="text"
+                                value={items}
+                                onChange={e => setItems(e.target.value)}
+                                placeholder="مثلا کیک و نوشابه"
+                            />
+                        </form>
+                        <form onSubmit={handleContinue}>
+                            <label>تاریخ خریدی که انجام دادی:</label>
+                            <input
+                                ref={dateInputRef}
+                                className="input"
+                                type="text"
+                                value={date}
+                                onChange={e => setDate(e.target.value)}
+                                placeholder="مثلا 1402/8/15"
+                            />
+                        </form>
+                        <form onSubmit={handleContinue}>
+                            <label>مجموع هزینه‌ای که کردی: (به تومان)</label>
+                            <input
+                                ref={costInputRef}
+                                className="input"
+                                type="text"
+                                value={cost}
+                                onChange={e => setCost(e.target.value)}
+                                placeholder="مثلا 275000"
+                            />
+                        </form>
+                        <form onSubmit={handleContinue}>
+                            <label>کسایی که باید دونگ بدن:</label>
+                            <Select
+                                className="input"
+                                value={members}
+                                options={users}
+                                onChange={setMembers}
+                                placeholder=""
+                                isMulti={true}
+                                isSearchable={false}
+                                styles={{
+                                    control: () => ({
+                                        padding: "0.4rem",
+                                        border: "2px solid var(--color-2)",
+                                        borderRadius: "10px"
+                                    }),
+                                    indicatorsContainer: () => ({
+                                        display: "none"
+                                    }),
+                                    menu: () => ({
+                                        position: "absolute"
+                                    }),
+                                    multiValue: () => ({
+                                        width: "fit-content",
+                                        paddingRight: "5px",
+                                        paddingLeft: "10px",
+                                        borderRadius: "10px",
+                                        display: "flex",
+                                        flexDirection: "row-reverse",
+                                        alignItems: "center",
+                                        columnGap: "5px",
+                                        fontWeight: "bold",
+                                        color: "var(--color-1)",
+                                        backgroundColor: "var(--color-2)"
+                                    }),
+                                    multiValueLabel: () => ({
+                                        width: "fit-content",
+                                        fontSize: "0.8rem"
+                                    }),
+                                    multiValueRemove: () => ({
+                                        width: "fit-content",
+                                        marginTop: "5px",
+                                        cursor: "pointer"
+                                    }),
+                                    noOptionsMessage: () => ({
+                                        display: "none"
+                                    }),
+                                    option: (defaultStyles, state) => ({
+                                        ...defaultStyles,
+                                        padding: "0.6rem",
+                                        textAlign: "left",
+                                        cursor: "pointer",
+                                        fontSize: "0.8rem",
+                                        color: state.isFocused ? "var(--color-1)" : "var(--color-2)",
+                                        backgroundColor: state.isFocused ? "var(--color-2)" : "var(--color-1)",
+                                        ":hover": {
+                                            color: "var(--color-1)",
+                                            backgroundColor: "var(--color-2)"
+                                        }
+                                    }),
+                                    valueContainer: () => ({
+                                        display: "flex",
+                                        flexDirection: "row-reverse",
+                                        flexWrap: "wrap",
+                                        gap: "5px"
+                                    })
+                                }}
+                            />
+                            <button className="see-invoice-btn" onClick={handleContinue}>دیدن فاکتور</button>
+                        </form>
+                        <button className="continue-btn" onClick={handleContinue}>ادامه</button>
+                    </section>
+                </main>
+            }
+        </>
     );
 };
 

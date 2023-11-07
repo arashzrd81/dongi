@@ -12,7 +12,7 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const Login = () => {
                     [index === 0 || index === 3 ? "y" : "x"]: positions[index]
                 });
             });
-            await new Promise(r => setTimeout(r, 1000));
+            await new Promise(r => setTimeout(r, 1500));
             navigate("/dashboard", {
                 replace: true
             });

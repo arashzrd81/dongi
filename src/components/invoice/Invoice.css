@@ -1,0 +1,101 @@
+.invoice-container {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+}
+
+.invoice-container .invoice-wrapper {
+    width: min(90%, 400px);
+    padding: 2.5rem 2rem 1rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    scale: 0;
+    font-size: 0.85rem;
+    color: var(--color-1);
+    background-color: var(--color-2);
+}
+
+.invoice-wrapper .hole {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-1);
+}
+
+.invoice-wrapper .field {
+    padding: 0.9rem 0.5rem;
+    border-bottom: 1px dashed var(--color-1);
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.invoice-wrapper .field .title {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.invoice-wrapper .field > :nth-child(2) {
+    font-weight: bold;
+}
+
+.invoice-wrapper .members {
+    border-bottom: none;
+}
+
+.invoice-wrapper .members .usernames {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.invoice-wrapper .members .username-wrapper {
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    column-gap: 0.31rem;
+    font-size: 0.7rem;
+    color: var(--color-2);
+    background-color: var(--color-1);
+}
+
+.invoice-wrapper .username-wrapper .circle {
+    width: 0.31rem;
+    height: 0.31rem;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.invoice-container .fa-circle-check {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    font-size: 4rem;
+    color: green;
+}
+
+.invoice-container form {
+    width: min(90%, 400px);
+    opacity: 0;
+    scale: 0;
+}
+
+.invoice-container form .approve-invoice-btn {
+    width: 100%;
+}
