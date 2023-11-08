@@ -1,0 +1,40 @@
+.approve-invoice-container {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+    overflow: hidden;
+}
+
+.approve-invoice-container > i {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    font-size: 4rem;
+}
+
+.approve-invoice-container .fa-circle-check {
+    color: green;
+}
+
+.approve-invoice-container .fa-circle-xmark {
+    color: red;
+}
+
+.approve-invoice-container form {
+    width: min(90%, 400px);
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    scale: 0;
+}
+
+.approve-invoice-container form button {
+    width: 48%;
+    column-gap: 0.5rem;
+}

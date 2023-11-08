@@ -12,10 +12,6 @@
     font-family: IRANSans;
 }
 
-body {
-    overflow: hidden;
-}
-
 html {
     --color-1: white;
     --color-2: black;

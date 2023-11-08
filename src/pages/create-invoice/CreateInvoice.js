@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import Select from "react-select";
-import Invoice from "../../components/invoice/Invoice";
+import ApproveInvoice from "../../components/approve-invoice/ApproveInvoice";
 import { showToast } from "../../helper/showToast";
 import "./CreateInvoice.css";
 
@@ -32,7 +33,7 @@ const users = [
 
 const CreateInvoice = () => {
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const [showInvoice, setShowInvoice] = useState(false);
 
     const [items, setItems] = useState("");
@@ -44,6 +45,8 @@ const CreateInvoice = () => {
     const dateInputRef = useRef();
     const costInputRef = useRef();
     const refs = [dateInputRef, costInputRef];
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleTransition = () => {
@@ -65,40 +68,64 @@ const CreateInvoice = () => {
                 duration: 1,
                 delay: 2.5,
                 ease: "power1.out",
-                opacity: 1
+                opacity: 1,
+                scale: 1
             });
         };
         handleTransition();
         itemsInputRef.current.focus();
     }, []);
 
+    const handleNavigate = async () => {
+        gsap.to(".continue-btn", {
+            duration: 0.75,
+            ease: "power1.in",
+            y: "100vh"
+        });
+        const temp = [...elements];
+        temp.reverse().forEach((element, index) => {
+            gsap.to(`form:nth-child(${count}) ${element}`, {
+                duration: 0.75,
+                delay: index ? 0.66 : 0.33,
+                ease: "power1.in",
+                y: "100vh"
+            });
+        });
+        gsap.to(".my-invoices-btn", {
+            duration: 0.75,
+            ease: "power1.in",
+            opacity: 0,
+            scale: 0
+        });
+        await new Promise(r => setTimeout(r, 2000));
+        navigate("/dashboard/my-invoices");
+    };
+
     const handleContinue = async e => {
         e.preventDefault();
-        if (count === 0 && !/^[\u0600-\u06FF\s]{2,50}$/.test(items)) {
+        if (count === 1 && !/^[\u0600-\u06FF\s]{2,50}$/.test(items)) {
             showToast("!لطفا متن معتبر وارد کنید");
-        } else if (count === 1 && !/^\d{4}[/]\d{1,2}[/]\d{1,2}$/.test(date)) {
+        } else if (count === 2 && !/^\d{4}[/]\d{1,2}[/]\d{1,2}$/.test(date)) {
             showToast("!لطفا تاریخ معتبر وارد کنید");
-        } else if (count === 2 && !/^\d+$/.test(cost)) {
+        } else if (count === 3 && !/^\d+$/.test(cost)) {
             showToast("!لطفا عدد معتبر وارد کنید");
-        } else if (count === 3 && !members) {
+        } else if (count === 4 && !members) {
             showToast("!باید حداقل یک عضو را انتخاب کنید");
         } else {
             elements.forEach((element, index) => {
-                gsap.to(`form:nth-child(${count + 1}) ${element}`, {
+                gsap.to(`form:nth-child(${count}) ${element}`, {
                     duration: 0.75,
                     delay: index / 3,
                     ease: "power1.in",
-                    y: "-100vh",
-                    opacity: 0
+                    y: "-100vh"
                 });
             });
-            if (count === 3) {
+            if (count === 4) {
                 gsap.to(".see-invoice-btn", {
                     duration: 0.75,
                     delay: 0.66,
                     ease: "power1.in",
-                    y: "-100vh",
-                    opacity: 0
+                    y: "-100vh"
                 });
                 gsap.to(".my-invoices-btn", {
                     duration: 0.75,
@@ -108,15 +135,14 @@ const CreateInvoice = () => {
                 await new Promise(r => setTimeout(r, 2000));
                 setShowInvoice(true);
             } else {
-                if (count === 0 || count === 1) {
-                    refs[count].current.focus();
+                if (count === 1 || count === 2) {
+                    refs[count-1].current.focus();
                 } else {
                     gsap.to(".continue-btn", {
                         duration: 0.75,
                         delay: 0.66,
                         ease: "power1.in",
-                        y: "-100vh",
-                        opacity: 0
+                        y: "-100vh"
                     });
                     gsap.to(".see-invoice-btn", {
                         duration: 1,
@@ -126,7 +152,7 @@ const CreateInvoice = () => {
                     });
                 }
                 elements.forEach((element, index) => {
-                    gsap.to(`form:nth-child(${count + 2}) ${element}`, {
+                    gsap.to(`form:nth-child(${count + 1}) ${element}`, {
                         duration: 1,
                         delay: index ? 1 : 0.75,
                         ease: "power1.out",
@@ -142,9 +168,9 @@ const CreateInvoice = () => {
         <>
             {
                 showInvoice ?
-                <Invoice items={items} date={date} cost={cost} members={members} /> :
+                <ApproveInvoice items={items} date={date} cost={cost} members={members} /> :
                 <main className="create-invoice-container">
-                    <button className="my-invoices-btn">
+                    <button className="my-invoices-btn" onClick={handleNavigate}>
                         <i className="fa-solid fa-clipboard-list"></i>
                         <span>فاکتورهای من</span>
                     </button>

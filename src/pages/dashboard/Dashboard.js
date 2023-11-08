@@ -31,8 +31,7 @@ const Dashboard = () => {
                 duration: 0.75,
                 delay: index / 3,
                 ease: "power1.in",
-                y: "-100vh",
-                opacity: 0
+                y: "-100vh"
             });
         });
         await new Promise(r => setTimeout(r, 1000));

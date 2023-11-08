@@ -1,0 +1,28 @@
+.my-invoices-container {
+    position: relative;
+}
+
+.my-invoices-container .dashboard-btn {
+    width: 10rem;
+    border-radius: 20px 0 0 20px;
+    position: absolute;
+    z-index: 1;
+    top: 1rem;
+    right: 1.5rem;
+    column-gap: 0.8rem;
+    opacity: 0;
+    scale: 0;
+}
+
+.my-invoices-container .my-invoices-wrapper {
+    padding: 6rem 0 3rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, min(90%, 350px));
+    justify-content: center;
+    gap: 3rem;
+}
+
+.my-invoices-wrapper > * {
+    width: 100%;
+}

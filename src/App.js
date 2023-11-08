@@ -1,9 +1,10 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CreateInvoice from "./pages/create-invoice/CreateInvoice";
-import { ToastContainer } from "react-toastify";
+import MyInvoices from "./pages/my-invoices/MyInvoices";
 import "./App.css";
 
 
@@ -24,6 +25,11 @@ const App = () => {
                 <Route path="/dashboard/create-invoice" element={
                     <ProtectedRoute>
                         <CreateInvoice />
+                    </ProtectedRoute>
+                } />
+                <Route path="/dashboard/my-invoices" element={
+                    <ProtectedRoute>
+                        <MyInvoices />
                     </ProtectedRoute>
                 } />
             </Routes>

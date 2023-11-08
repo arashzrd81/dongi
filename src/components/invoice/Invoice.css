@@ -1,14 +1,4 @@
-.invoice-container {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 1rem;
-}
-
-.invoice-container .invoice-wrapper {
+.invoice-wrapper {
     width: min(90%, 400px);
     padding: 2.5rem 2rem 1rem;
     border-radius: 15px;
@@ -78,24 +68,4 @@
     height: 0.31rem;
     border-radius: 50%;
     background-color: red;
-}
-
-.invoice-container .fa-circle-check {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    font-size: 4rem;
-    color: green;
-}
-
-.invoice-container form {
-    width: min(90%, 400px);
-    opacity: 0;
-    scale: 0;
-}
-
-.invoice-container form .approve-invoice-btn {
-    width: 100%;
 }

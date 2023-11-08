@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .create-invoice-container .my-invoices-btn {
@@ -15,6 +16,7 @@
     right: 1.5rem;
     column-gap: 0.8rem;
     opacity: 0;
+    scale: 0;
 }
 
 .my-invoices-btn i {

@@ -9,6 +9,7 @@
 .login-container {
     height: 100vh;
     justify-content: center;
+    overflow: hidden;
 }
 
 .login-container .login-wrapper {
