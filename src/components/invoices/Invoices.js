@@ -16,15 +16,14 @@ const Invoices = ({invoicesInfo, invoiceType}) => {
                 gsap.to(`.${invoiceType}-invoice-wrapper:nth-child(${index + 1})`, {
                     duration: 1,
                     delay: index / 5,
-                    ease: "power1.out",
-                    opacity: 1,
+                    ease: "Elastic.easeOut(0.3)",
                     scale: 1
                 });
             });
             gsap.to(".dashboard-btn", {
-                duration: 1,
-                ease: "power1.out",
-                opacity: 1,
+                duration: 0.75,
+                delay: 0.75,
+                ease: "Elastic.easeOut(0.5)",
                 scale: 1
             });
         };
@@ -36,15 +35,14 @@ const Invoices = ({invoicesInfo, invoiceType}) => {
             gsap.to(`.${invoiceType}-invoice-wrapper:nth-child(${invoicesInfo.length - index})`, {
                 duration: 0.75,
                 delay: index / 5,
-                ease: "power1.in",
+                ease: "power1.out",
                 opacity: 0,
                 scale: 0
             });
         });
         gsap.to(".dashboard-btn", {
             duration: 0.75,
-            ease: "power1.in",
-            opacity: 0,
+            ease: "Elastic.easeIn(0.5)",
             scale: 0
         });
         await new Promise(r => setTimeout(r, 2000));

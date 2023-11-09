@@ -3,7 +3,6 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    opacity: 0;
     scale: 0;
     font-size: 0.9rem;
     color: var(--color-1);

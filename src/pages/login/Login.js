@@ -58,7 +58,6 @@ const Login = () => {
                         type="text"
                         value={username}
                         onChange={e => setUsername(e.target.value)}
-                        autoFocus={true}
                         placeholder="نام کاربری"
                     />
                     <input

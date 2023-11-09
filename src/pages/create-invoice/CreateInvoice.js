@@ -20,7 +20,6 @@ const CreateInvoice = () => {
     const [cost, setCost] = useState("");
     const [members, setMembers] = useState();
 
-    const itemsInputRef = useRef();
     const dateInputRef = useRef();
     const costInputRef = useRef();
     const refs = [dateInputRef, costInputRef];
@@ -31,28 +30,26 @@ const CreateInvoice = () => {
         const handleTransition = () => {
             elements.forEach((element, index) => {
                 gsap.to(`form:nth-child(1) ${element}`, {
-                    duration: 1,
+                    duration: 0.75,
                     delay: index / 4,
                     ease: "power1.out",
                     transform: "translateX(-100vw)"
                 });
             });
             gsap.to(".continue-btn", {
-                duration: 1,
+                duration: 0.75,
                 delay: 0.5,
                 ease: "power1.out",
                 x: 0
             });
             gsap.to(".my-invoices-btn", {
-                duration: 1,
+                duration: 0.75,
                 delay: 1.5,
-                ease: "power1.out",
-                opacity: 1,
+                ease: "Elastic.easeOut(0.5)",
                 scale: 1
             });
         };
         handleTransition();
-        itemsInputRef.current.focus();
     }, []);
 
     const handleNavigate = async () => {
@@ -72,8 +69,7 @@ const CreateInvoice = () => {
         });
         gsap.to(".my-invoices-btn", {
             duration: 0.75,
-            ease: "power1.in",
-            opacity: 0,
+            ease: "Elastic.easeIn(0.5)",
             scale: 0
         });
         await new Promise(r => setTimeout(r, 2000));
@@ -108,8 +104,7 @@ const CreateInvoice = () => {
                 });
                 gsap.to(".my-invoices-btn", {
                     duration: 0.75,
-                    ease: "power1.in",
-                    opacity: 0,
+                    ease: "Elastic.easeIn(0.5)",
                     scale: 0
                 });
                 await new Promise(r => setTimeout(r, 2000));
@@ -125,7 +120,7 @@ const CreateInvoice = () => {
                         y: "-100vh"
                     });
                     gsap.to(".see-invoice-btn", {
-                        duration: 1,
+                        duration: 0.75,
                         delay: 1.25,
                         ease: "power1.out",
                         transform: "translateX(-100vw)"
@@ -133,7 +128,7 @@ const CreateInvoice = () => {
                 }
                 elements.forEach((element, index) => {
                     gsap.to(`form:nth-child(${count + 1}) ${element}`, {
-                        duration: 1,
+                        duration: 0.75,
                         delay: index ? 1 : 0.75,
                         ease: "power1.out",
                         transform: "translateX(-100vw)"
@@ -158,7 +153,6 @@ const CreateInvoice = () => {
                         <form onSubmit={handleContinue}>
                             <label>اقلامی که خریدی:</label>
                             <input
-                                ref={itemsInputRef}
                                 className="input"
                                 type="text"
                                 value={items}

@@ -15,8 +15,8 @@ const Dashboard = () => {
             elements.forEach(element => {
                 gsap.to(element, {
                     duration: 1,
-                    ease: "power1.out",
-                    y: 0
+                    ease: "Elastic.easeOut(0.5)",
+                    scale: 1
                 });
             });
         };
@@ -28,13 +28,13 @@ const Dashboard = () => {
         temp = e.target.className === "creditor-btn" ? [...temp] : [...temp.reverse()];
         temp.forEach((element, index) => {
             gsap.to(element, {
-                duration: 0.75,
-                delay: index / 3,
-                ease: "power1.in",
+                duration: 1,
+                delay: index / 2,
+                ease: "Elastic.easeIn(0.5)",
                 y: "-100vh"
             });
         });
-        await new Promise(r => setTimeout(r, 1500));
+        await new Promise(r => setTimeout(r, 2000));
         if (e.target.className === "creditor-btn") {
             navigate("/dashboard/create-invoice");
         } else {

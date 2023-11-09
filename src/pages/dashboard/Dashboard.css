@@ -12,10 +12,10 @@
 }
 
 .dashboard-wrapper button {
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 7rem;
+    height: 7rem;
     border: none;
     border-radius: 50%;
     font-size: 0.8rem;
-    transform: translateY(100vh);
+    scale: 0;
 }

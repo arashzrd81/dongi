@@ -14,8 +14,8 @@
     top: 40%;
     left: 50%;
     transform: translateX(-50%);
-    opacity: 0;
     font-size: 4rem;
+    opacity: 0;
 }
 
 .approve-invoice-container .fa-circle-check {
@@ -30,7 +30,6 @@
     width: min(90%, 400px);
     display: flex;
     justify-content: space-between;
-    opacity: 0;
     scale: 0;
 }
 

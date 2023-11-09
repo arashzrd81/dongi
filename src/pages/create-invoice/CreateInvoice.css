@@ -15,7 +15,6 @@
     top: 1rem;
     right: 1.5rem;
     column-gap: 0.8rem;
-    opacity: 0;
     scale: 0;
 }
 
@@ -24,7 +23,7 @@
 }
 
 .create-invoice-container .create-invoice-wrapper {
-    width: min(80%, 350px);
+    width: min(70%, 300px);
     position: relative;
 }
 

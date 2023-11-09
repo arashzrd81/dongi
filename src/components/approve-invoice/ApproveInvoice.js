@@ -13,10 +13,15 @@ const ApproveInvoice = ({items, date, cost, members}) => {
 
     useEffect(() => {
         const handleTransition = () => {
-            gsap.to([".credit-invoice-wrapper", "form"], {
+            gsap.to(".credit-invoice-wrapper", {
                 duration: 1,
-                ease: "power1.out",
-                opacity: 1,
+                ease: "Elastic.easeOut(0.4)",
+                scale: 1
+            });
+            gsap.to("form", {
+                duration: 1,
+                delay: 1,
+                ease: "Elastic.easeOut(0.4)",
                 scale: 1
             });
         };
@@ -37,12 +42,13 @@ const ApproveInvoice = ({items, date, cost, members}) => {
         });
         gsap.to("form", {
             duration: 0.75,
-            y: "100vh"
+            ease: "Elastic.easeIn(0.4)",
+            scale: 0
         });
         await new Promise(r => setTimeout(r, 2000));
         gsap.to([".credit-invoice-wrapper", "i:nth-child(2)"], {
             duration: 0.75,
-            ease: "power1.in",
+            ease: "Elastic.easeIn(0.4)",
             y: "-100vh"
         });
         await new Promise(r => setTimeout(r, 1500));
