@@ -34,9 +34,11 @@ const Dashboard = () => {
                 y: "-100vh"
             });
         });
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 1500));
         if (e.target.className === "creditor-btn") {
             navigate("/dashboard/create-invoice");
+        } else {
+            navigate("/dashboard/debt-invoices");
         }
     };
 

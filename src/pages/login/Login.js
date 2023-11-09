@@ -62,7 +62,7 @@ const Login = () => {
                         placeholder="نام کاربری"
                     />
                     <input
-                        type="text"
+                        type="password"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         placeholder="رمز عبور"

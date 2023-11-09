@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
-import Invoice from "../invoice/Invoice";
+import CreditInvoice from "../credit-invoice/CreditInvoice";
 import "./ApproveInvoice.css";
 
 
@@ -13,7 +13,7 @@ const ApproveInvoice = ({items, date, cost, members}) => {
 
     useEffect(() => {
         const handleTransition = () => {
-            gsap.to([".invoice-wrapper", "form"], {
+            gsap.to([".credit-invoice-wrapper", "form"], {
                 duration: 1,
                 ease: "power1.out",
                 opacity: 1,
@@ -25,7 +25,7 @@ const ApproveInvoice = ({items, date, cost, members}) => {
 
     const handleApprove = async e => {
         e.preventDefault();
-        gsap.to(".invoice-wrapper", {
+        gsap.to(".credit-invoice-wrapper", {
             duration: 0.75,
             ease: "power1.out",
             opacity: 0.3
@@ -40,18 +40,18 @@ const ApproveInvoice = ({items, date, cost, members}) => {
             y: "100vh"
         });
         await new Promise(r => setTimeout(r, 2000));
-        gsap.to([".invoice-wrapper", "i:nth-child(2)"], {
+        gsap.to([".credit-invoice-wrapper", "i:nth-child(2)"], {
             duration: 0.75,
             ease: "power1.in",
             y: "-100vh"
         });
         await new Promise(r => setTimeout(r, 1500));
-        navigate("/dashboard/my-invoices");
+        navigate("/dashboard/credit-invoices");
     };
 
     return (
         <div className="approve-invoice-container">
-            <Invoice items={items} date={date} cost={cost} members={members} />
+            <CreditInvoice items={items} date={date} cost={cost} members={members} />
             {
                 deleteInvoice ?
                 <i className="fa-solid fa-circle-xmark"></i> :

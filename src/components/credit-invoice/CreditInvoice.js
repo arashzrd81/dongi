@@ -1,26 +1,26 @@
 import React from "react";
-import "./Invoice.css";
+import "./CreditInvoice.css";
 
 
 const Invoice = ({items, date, cost, members}) => {
     return (
-        <div className="invoice-wrapper">
+        <div className="credit-invoice-wrapper">
             <span className="hole"></span>
-            <div className="field items">
+            <div className="field">
                 <div className="title">
                     <i className="fa-solid fa-cart-shopping"></i>
                     <span>عنوان خرید:</span>
                 </div>
                 <span>{items}</span>
             </div>
-            <div className="field date">
+            <div className="field">
                 <div className="title">
                     <i className="fa-regular fa-calendar-days"></i>
                     <span>تاریخ خرید:</span>
                 </div>
                 <span>{date}</span>
             </div>
-            <div className="field cost">
+            <div className="field">
                 <div className="title">
                     <i className="fa-solid fa-tag"></i>
                     <span>مجموع هزینه‌ی انجام شده:</span>

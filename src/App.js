@@ -4,7 +4,8 @@ import { ToastContainer } from "react-toastify";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CreateInvoice from "./pages/create-invoice/CreateInvoice";
-import MyInvoices from "./pages/my-invoices/MyInvoices";
+import CreditInvoices from "./pages/credit-invoices/CreditInvoices";
+import DebtInvoices from "./pages/debt-invoices/DebtInvoices";
 import "./App.css";
 
 
@@ -27,9 +28,14 @@ const App = () => {
                         <CreateInvoice />
                     </ProtectedRoute>
                 } />
-                <Route path="/dashboard/my-invoices" element={
+                <Route path="/dashboard/credit-invoices" element={
                     <ProtectedRoute>
-                        <MyInvoices />
+                        <CreditInvoices />
+                    </ProtectedRoute>
+                } />
+                <Route path="/dashboard/debt-invoices" element={
+                    <ProtectedRoute>
+                        <DebtInvoices />
                     </ProtectedRoute>
                 } />
             </Routes>

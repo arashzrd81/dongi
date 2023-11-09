@@ -1,0 +1,70 @@
+.debt-invoice-wrapper {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    scale: 0;
+    font-size: 0.9rem;
+    color: var(--color-1);
+    background-color: var(--color-2);
+}
+
+.debt-invoice-wrapper .header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.debt-invoice-wrapper .header > * {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.debt-invoice-wrapper .details {
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.debt-invoice-wrapper .details :last-child {
+    border-bottom: none;
+}
+
+.debt-invoice-wrapper .share .info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.debt-invoice-wrapper .info > :nth-child(2) {
+    font-weight: bold;
+}
+
+.debt-invoice-wrapper .details .share {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.debt-invoice-wrapper .share button {
+    width: 150px;
+    border: none;
+    color: var(--color-2);
+    background-color: var(--color-1);
+    box-shadow: 0 0 5px var(--color-1);
+}
+
+
+
+/* Media Query */
+
+@media screen and (min-width: 992px) {
+    .debt-invoice-wrapper .header {
+        cursor: pointer;
+    }
+}

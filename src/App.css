@@ -44,6 +44,25 @@ button {
     box-shadow: 0 0 5px var(--color-2);
 }
 
+.field {
+    padding: 0.9rem 0.5rem;
+    border-bottom: 1px dashed var(--color-1);
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.field .title {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.field > :nth-child(2) {
+    font-weight: bold;
+}
+
 .toast {
     width: 100%;
     padding: 15px;

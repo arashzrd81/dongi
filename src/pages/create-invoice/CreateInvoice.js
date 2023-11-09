@@ -3,33 +3,12 @@ import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import Select from "react-select";
 import ApproveInvoice from "../../components/approve-invoice/ApproveInvoice";
+import { fakeData } from "../../helper/fakeData";
 import { showToast } from "../../helper/showToast";
 import "./CreateInvoice.css";
 
 
 const elements = ["label", ".input"];
-const users = [
-    {
-        value: "user_1",
-        label: "user_1"
-    },
-    {
-        value: "user_2",
-        label: "user_2"
-    },
-    {
-        value: "user_3",
-        label: "user_3"
-    },
-    {
-        value: "user_4",
-        label: "user_4"
-    },
-    {
-        value: "user_5",
-        label: "user_5"
-    }
-];
 
 const CreateInvoice = () => {
 
@@ -53,20 +32,20 @@ const CreateInvoice = () => {
             elements.forEach((element, index) => {
                 gsap.to(`form:nth-child(1) ${element}`, {
                     duration: 1,
-                    delay: index ? 1.25 : 1,
+                    delay: index / 4,
                     ease: "power1.out",
                     transform: "translateX(-100vw)"
                 });
             });
             gsap.to(".continue-btn", {
                 duration: 1,
-                delay: 1.5,
+                delay: 0.5,
                 ease: "power1.out",
                 x: 0
             });
             gsap.to(".my-invoices-btn", {
                 duration: 1,
-                delay: 2.5,
+                delay: 1.5,
                 ease: "power1.out",
                 opacity: 1,
                 scale: 1
@@ -98,7 +77,7 @@ const CreateInvoice = () => {
             scale: 0
         });
         await new Promise(r => setTimeout(r, 2000));
-        navigate("/dashboard/my-invoices");
+        navigate("/dashboard/credit-invoices");
     };
 
     const handleContinue = async e => {
@@ -130,7 +109,8 @@ const CreateInvoice = () => {
                 gsap.to(".my-invoices-btn", {
                     duration: 0.75,
                     ease: "power1.in",
-                    opacity: 0
+                    opacity: 0,
+                    scale: 0
                 });
                 await new Promise(r => setTimeout(r, 2000));
                 setShowInvoice(true);
@@ -183,7 +163,7 @@ const CreateInvoice = () => {
                                 type="text"
                                 value={items}
                                 onChange={e => setItems(e.target.value)}
-                                placeholder="مثلا کیک و نوشابه"
+                                placeholder="مثلا کیک و کادوی تولد"
                             />
                         </form>
                         <form onSubmit={handleContinue}>
@@ -194,7 +174,7 @@ const CreateInvoice = () => {
                                 type="text"
                                 value={date}
                                 onChange={e => setDate(e.target.value)}
-                                placeholder="مثلا 1402/8/15"
+                                placeholder="مثلا 1402/8/11"
                             />
                         </form>
                         <form onSubmit={handleContinue}>
@@ -205,7 +185,7 @@ const CreateInvoice = () => {
                                 type="text"
                                 value={cost}
                                 onChange={e => setCost(e.target.value)}
-                                placeholder="مثلا 275000"
+                                placeholder="مثلا 825000"
                             />
                         </form>
                         <form onSubmit={handleContinue}>
@@ -213,7 +193,7 @@ const CreateInvoice = () => {
                             <Select
                                 className="input"
                                 value={members}
-                                options={users}
+                                options={fakeData[0].members}
                                 onChange={setMembers}
                                 placeholder=""
                                 isMulti={true}
