@@ -44,23 +44,30 @@ button {
     box-shadow: 0 0 5px var(--color-2);
 }
 
-.field {
-    padding: 0.9rem 0.5rem;
-    border-bottom: 1px dashed var(--color-1);
+.members .usernames {
     display: flex;
-    flex-direction: column;
-    row-gap: 0.5rem;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-weight: bold;
 }
 
-.field .title {
+.members .username-wrapper {
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    column-gap: 0.5rem;
-    font-size: 0.75rem;
+    column-gap: 0.31rem;
+    font-size: 0.7rem;
+    color: var(--color-2);
+    background-color: var(--color-1);
 }
 
-.field > :nth-child(2) {
-    font-weight: bold;
+.username-wrapper .circle {
+    width: 0.31rem;
+    height: 0.31rem;
+    border-radius: 50%;
+    background-color: red;
 }
 
 .toast {

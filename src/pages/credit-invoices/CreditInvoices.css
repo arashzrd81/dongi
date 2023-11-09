@@ -1,12 +1,1 @@
-.credit-invoices-wrapper {
-    padding: 6rem 0 3rem;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, min(85%, 350px));
-    justify-content: center;
-    gap: 3rem;
-}
-
-.credit-invoices-wrapper > * {
-    width: 100%;
-}
+/* Empty */

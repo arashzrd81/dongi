@@ -9,6 +9,33 @@
     overflow: hidden;
 }
 
+.approve-invoice-container .approve-invoice-wrapper {
+    width: min(80%, 400px);
+    padding: 2.5rem 2rem 1rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    scale: 0;
+    font-size: 0.85rem;
+    color: var(--color-1);
+    background-color: var(--color-2);
+}
+
+.approve-invoice-wrapper .hole {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-1);
+}
+
+.approve-invoice-wrapper .members {
+    border-bottom: none;
+}
+
 .approve-invoice-container > i {
     position: absolute;
     top: 40%;
@@ -27,13 +54,13 @@
 }
 
 .approve-invoice-container form {
-    width: min(90%, 400px);
+    width: min(80%, 400px);
     display: flex;
     justify-content: space-between;
     scale: 0;
 }
 
 .approve-invoice-container form button {
-    width: 48%;
+    width: 49%;
     column-gap: 0.5rem;
 }

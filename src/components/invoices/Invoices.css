@@ -12,3 +12,12 @@
     column-gap: 0.8rem;
     scale: 0;
 }
+
+.invoices-container .invoices-wrapper {
+    width: min(80%, 1000px);
+    padding: 10rem 0 3rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}

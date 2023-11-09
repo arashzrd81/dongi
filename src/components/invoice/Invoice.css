@@ -1,4 +1,4 @@
-.debt-invoice-wrapper {
+.invoice-wrapper {
     width: 100%;
     border-radius: 10px;
     display: flex;
@@ -9,7 +9,7 @@
     background-color: var(--color-2);
 }
 
-.debt-invoice-wrapper .header {
+.invoice-wrapper .header {
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -17,40 +17,47 @@
     font-weight: bold;
 }
 
-.debt-invoice-wrapper .header > * {
+.invoice-wrapper .header > * {
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
 }
 
-.debt-invoice-wrapper .details {
-    padding: 0.5rem 1.5rem;
+.invoice-wrapper .details {
+    height: 0;
+    padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
-.debt-invoice-wrapper .details :last-child {
+.invoice-wrapper .details > :last-child {
     border-bottom: none;
 }
 
-.debt-invoice-wrapper .share .info {
+.invoice-wrapper .details .members {
+    padding-bottom: 2rem;
+}
+
+.invoice-wrapper .share .info {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
 }
 
-.debt-invoice-wrapper .info > :nth-child(2) {
+.invoice-wrapper .info > :nth-child(2) {
     font-weight: bold;
 }
 
-.debt-invoice-wrapper .details .share {
+.invoice-wrapper .details .share {
+    padding-bottom: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.debt-invoice-wrapper .share button {
+.invoice-wrapper .share button {
     width: 150px;
     border: none;
     color: var(--color-2);
@@ -63,7 +70,7 @@
 /* Media Query */
 
 @media screen and (min-width: 992px) {
-    .debt-invoice-wrapper .header {
+    .invoice-wrapper .header {
         cursor: pointer;
     }
 }

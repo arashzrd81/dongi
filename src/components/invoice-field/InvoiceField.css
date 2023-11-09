@@ -1,0 +1,18 @@
+.invoice-field-wrapper {
+    padding: 0.9rem 0.5rem;
+    border-bottom: 1px dashed var(--color-1);
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.invoice-field-wrapper .title {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.invoice-field-wrapper .value {
+    font-weight: bold;
+}

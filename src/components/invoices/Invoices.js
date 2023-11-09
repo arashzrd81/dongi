@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
-import CreditInvoice from "../credit-invoice/CreditInvoice";
-import DebtInvoice from "../debt-invoice/DebtInvoice";
+import Invoice from "../invoice/Invoice";
 import "./Invoices.css";
 
 
@@ -13,7 +12,7 @@ const Invoices = ({invoicesInfo, invoiceType}) => {
     useEffect(() => {
         const handleTransition = () => {
             invoicesInfo.forEach((x, index) => {
-                gsap.to(`.${invoiceType}-invoice-wrapper:nth-child(${index + 1})`, {
+                gsap.to(`.invoice-wrapper:nth-child(${index + 1})`, {
                     duration: 1,
                     delay: index / 5,
                     ease: "Elastic.easeOut(0.3)",
@@ -32,7 +31,7 @@ const Invoices = ({invoicesInfo, invoiceType}) => {
 
     const handleNavigate = async () => {
         invoicesInfo.forEach((x, index) => {
-            gsap.to(`.${invoiceType}-invoice-wrapper:nth-child(${invoicesInfo.length - index})`, {
+            gsap.to(`.invoice-wrapper:nth-child(${invoicesInfo.length - index})`, {
                 duration: 0.75,
                 delay: index / 5,
                 ease: "power1.out",
@@ -55,24 +54,16 @@ const Invoices = ({invoicesInfo, invoiceType}) => {
                 <i className="fa-solid fa-house"></i>
                 <span>داشبورد</span>
             </button>
-            <section className={invoiceType + "-invoices-wrapper"}>
+            <section className="invoices-wrapper">
                 {
-                    invoiceType === "credit" ?
                     invoicesInfo.map((invoiceInfo, index) => (
-                        <CreditInvoice
+                        <Invoice
                             key={index}
+                            invoiceType={invoiceType}
                             items={invoiceInfo.items}
                             date={invoiceInfo.date}
                             cost={invoiceInfo.cost}
-                            members={invoiceInfo.members}
-                        />
-                    )) :
-                    invoicesInfo.map((invoiceInfo, index) => (
-                        <DebtInvoice
-                            key={index}
-                            items={invoiceInfo.items}
-                            date={invoiceInfo.date}
-                            cost={invoiceInfo.cost}
+                            members={invoiceType === "credit" ? invoiceInfo.members : null}
                         />
                     ))
                 }
