@@ -28,7 +28,7 @@ const ApproveInvoice = ({items, date, cost, members}) => {
         handleTransition();
     }, []);
 
-    const handleApprove = async e => {
+    const handleSelect = async e => {
         e.preventDefault();
         gsap.to(".approve-invoice-wrapper", {
             duration: 0.75,
@@ -96,7 +96,7 @@ const ApproveInvoice = ({items, date, cost, members}) => {
                 <i className="fa-solid fa-circle-xmark"></i> :
                 <i className="fa-solid fa-circle-check"></i>
             }
-            <form onSubmit={handleApprove}>
+            <form onSubmit={handleSelect}>
                 <button type="submit" autoFocus={true}>
                     <i className="fa-solid fa-clipboard-check"></i>
                     <span>ثبت فاکتور</span>

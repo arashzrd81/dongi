@@ -27,7 +27,13 @@ const CreateInvoice = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const handleTransition = () => {
+        const handleTransition = async () => {
+            gsap.to(".my-invoices-btn", {
+                duration: 0.75,
+                ease: "Elastic.easeOut(0.5)",
+                scale: 1
+            });
+            await new Promise(r => setTimeout(r, 750));
             elements.forEach((element, index) => {
                 gsap.to(`form:nth-child(1) ${element}`, {
                     duration: 0.75,
@@ -42,17 +48,16 @@ const CreateInvoice = () => {
                 ease: "power1.out",
                 x: 0
             });
-            gsap.to(".my-invoices-btn", {
-                duration: 0.75,
-                delay: 1.5,
-                ease: "Elastic.easeOut(0.5)",
-                scale: 1
-            });
         };
         handleTransition();
     }, []);
 
     const handleNavigate = async () => {
+        gsap.to(".my-invoices-btn", {
+            duration: 0.75,
+            ease: "Elastic.easeIn(0.5)",
+            scale: 0
+        });
         gsap.to(".continue-btn", {
             duration: 0.75,
             ease: "power1.in",
@@ -66,11 +71,6 @@ const CreateInvoice = () => {
                 ease: "power1.in",
                 y: "100vh"
             });
-        });
-        gsap.to(".my-invoices-btn", {
-            duration: 0.75,
-            ease: "Elastic.easeIn(0.5)",
-            scale: 0
         });
         await new Promise(r => setTimeout(r, 2000));
         navigate("/dashboard/credit-invoices");
@@ -96,16 +96,16 @@ const CreateInvoice = () => {
                 });
             });
             if (count === 4) {
+                gsap.to(".my-invoices-btn", {
+                    duration: 0.75,
+                    ease: "Elastic.easeIn(0.5)",
+                    scale: 0
+                });
                 gsap.to(".see-invoice-btn", {
                     duration: 0.75,
                     delay: 0.66,
                     ease: "power1.in",
                     y: "-100vh"
-                });
-                gsap.to(".my-invoices-btn", {
-                    duration: 0.75,
-                    ease: "Elastic.easeIn(0.5)",
-                    scale: 0
                 });
                 await new Promise(r => setTimeout(r, 2000));
                 setShowInvoice(true);

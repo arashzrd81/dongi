@@ -1,15 +1,22 @@
 .invoice-wrapper {
     width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    column-gap: 0.5rem;
+    scale: 0;
+}
+
+.invoice-wrapper .main {
+    width: 85%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    scale: 0;
     font-size: 0.9rem;
     color: var(--color-1);
     background-color: var(--color-2);
 }
 
-.invoice-wrapper .header {
+.invoice-wrapper .main .header {
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -23,7 +30,7 @@
     column-gap: 0.5rem;
 }
 
-.invoice-wrapper .details {
+.invoice-wrapper .main .details {
     height: 0;
     padding: 0 1.5rem;
     display: flex;
@@ -65,12 +72,29 @@
     box-shadow: 0 0 5px var(--color-1);
 }
 
+.invoice-wrapper .delete-invoice-wrapper {
+    align-self: flex-start;
+    width: min(15%, 65px);
+    padding: 1.1rem 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD6D6;
+}
+
+.invoice-wrapper .delete-invoice-wrapper i {
+    font-size: 1.2rem;
+    color: red;
+}
+
 
 
 /* Media Query */
 
 @media screen and (min-width: 992px) {
-    .invoice-wrapper .header {
+    .invoice-wrapper .header,
+    .invoice-wrapper .delete-invoice-wrapper {
         cursor: pointer;
     }
 }
