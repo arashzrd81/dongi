@@ -1,6 +1,6 @@
 .invoice-field-wrapper {
     padding: 0.9rem 0.5rem;
-    border-bottom: 1px dashed var(--color-1);
+    border-bottom: 1px dashed black;
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
@@ -11,6 +11,10 @@
     align-items: center;
     column-gap: 0.5rem;
     font-size: 0.75rem;
+}
+
+.invoice-field-wrapper .title i {
+    color: #8F94FB;
 }
 
 .invoice-field-wrapper .value {

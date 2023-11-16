@@ -12,8 +12,7 @@
     display: flex;
     flex-direction: column;
     font-size: 0.9rem;
-    color: var(--color-1);
-    background-color: var(--color-2);
+    background-color: white;
 }
 
 .invoice-wrapper .main .header {
@@ -28,6 +27,10 @@
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
+}
+
+.invoice-wrapper .header .fa-clipboard-list {
+    color: #8F94FB;
 }
 
 .invoice-wrapper .main .details {
@@ -67,9 +70,6 @@
 .invoice-wrapper .share button {
     width: 150px;
     border: none;
-    color: var(--color-2);
-    background-color: var(--color-1);
-    box-shadow: 0 0 5px var(--color-1);
 }
 
 .invoice-wrapper .delete-invoice-wrapper {

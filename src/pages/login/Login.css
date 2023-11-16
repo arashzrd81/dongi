@@ -19,6 +19,7 @@
 
 .login-wrapper h1 {
     font-size: 1.05rem;
+    color: white;
     transform: translateY(-100vh);
 }
 

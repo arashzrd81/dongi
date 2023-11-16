@@ -17,11 +17,10 @@
     flex-direction: column;
     scale: 0;
     font-size: 0.85rem;
-    color: var(--color-1);
-    background-color: var(--color-2);
+    background-color: white;
 }
 
-.approve-invoice-wrapper .hole {
+.approve-invoice-wrapper .top-invoice {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
@@ -29,7 +28,18 @@
     top: -1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--color-1);
+    background-color: white;
+}
+
+.approve-invoice-wrapper .top-invoice .hole {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #8F94FB;
 }
 
 .approve-invoice-wrapper .members {
@@ -57,10 +67,10 @@
     width: min(80%, 400px);
     display: flex;
     justify-content: space-between;
-    scale: 0;
 }
 
 .approve-invoice-container form button {
-    width: 49%;
+    width: 48%;
     column-gap: 0.5rem;
+    scale: 0;
 }

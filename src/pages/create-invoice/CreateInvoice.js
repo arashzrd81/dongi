@@ -151,7 +151,10 @@ const CreateInvoice = () => {
                     </button>
                     <section className="create-invoice-wrapper">
                         <form onSubmit={handleContinue}>
-                            <label>اقلامی که خریدی:</label>
+                            <label>
+                                <i className="fa-solid fa-cart-shopping"></i>
+                                <span>اقلامی که خریدی:</span>
+                            </label>
                             <input
                                 className="input"
                                 type="text"
@@ -161,7 +164,10 @@ const CreateInvoice = () => {
                             />
                         </form>
                         <form onSubmit={handleContinue}>
-                            <label>تاریخ خریدی که انجام دادی:</label>
+                            <label>
+                                <i className="fa-regular fa-calendar-days"></i>
+                                <span>تاریخ خریدی که انجام دادی:</span>
+                            </label>
                             <input
                                 ref={dateInputRef}
                                 className="input"
@@ -172,7 +178,10 @@ const CreateInvoice = () => {
                             />
                         </form>
                         <form onSubmit={handleContinue}>
-                            <label>مجموع هزینه‌ای که کردی: (به تومان)</label>
+                            <label>
+                                <i className="fa-solid fa-tag"></i>
+                                <span>مجموع هزینه‌ای که کردی: (به تومان)</span>
+                            </label>
                             <input
                                 ref={costInputRef}
                                 className="input"
@@ -183,7 +192,10 @@ const CreateInvoice = () => {
                             />
                         </form>
                         <form onSubmit={handleContinue}>
-                            <label>کسایی که باید دونگ بدن:</label>
+                            <label>
+                                <i className="fa-solid fa-users"></i>
+                                <span>کسایی که باید دونگ بدن:</span>
+                            </label>
                             <Select
                                 className="input"
                                 value={members}
@@ -195,14 +207,18 @@ const CreateInvoice = () => {
                                 styles={{
                                     control: () => ({
                                         padding: "0.4rem",
-                                        border: "2px solid var(--color-2)",
-                                        borderRadius: "10px"
+                                        border: "none",
+                                        borderRadius: "10px",
+                                        backgroundColor: "white"
                                     }),
                                     indicatorsContainer: () => ({
                                         display: "none"
                                     }),
                                     menu: () => ({
-                                        position: "absolute"
+                                        width: "100%",
+                                        marginTop: "5px",
+                                        position: "absolute",
+                                        backgroundColor: "white"
                                     }),
                                     multiValue: () => ({
                                         width: "fit-content",
@@ -214,8 +230,8 @@ const CreateInvoice = () => {
                                         alignItems: "center",
                                         columnGap: "5px",
                                         fontWeight: "bold",
-                                        color: "var(--color-1)",
-                                        backgroundColor: "var(--color-2)"
+                                        color: "white",
+                                        backgroundColor: "black"
                                     }),
                                     multiValueLabel: () => ({
                                         width: "fit-content",
@@ -235,11 +251,11 @@ const CreateInvoice = () => {
                                         textAlign: "left",
                                         cursor: "pointer",
                                         fontSize: "0.8rem",
-                                        color: state.isFocused ? "var(--color-1)" : "var(--color-2)",
-                                        backgroundColor: state.isFocused ? "var(--color-2)" : "var(--color-1)",
+                                        color: state.isFocused ? "white" : "black",
+                                        backgroundColor: state.isFocused ? "black" : "white",
                                         ":hover": {
-                                            color: "var(--color-1)",
-                                            backgroundColor: "var(--color-2)"
+                                            color: "white",
+                                            backgroundColor: "black"
                                         }
                                     }),
                                     valueContainer: () => ({

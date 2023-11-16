@@ -27,10 +27,11 @@ const Dashboard = () => {
         let temp = [...elements];
         temp = e.target.className === "creditor-btn" ? [...temp] : [...temp.reverse()];
         gsap.to(temp[0], {
-            duration: 0.75,
+            duration: 0.5,
             ease: "power4.out",
-            backgroundColor: "#D4AF37",
-            boxShadow: "0 0 10px #D4AF37"
+            color: "white",
+            backgroundColor: "#E73213",
+            boxShadow: "0 0 10px #E73213"
         });
         await new Promise(r => setTimeout(r, 750));
         temp.forEach((element, index) => {

@@ -18,11 +18,13 @@ const ApproveInvoice = ({items, date, cost, members}) => {
                 ease: "Elastic.easeOut(0.4)",
                 scale: 1
             });
-            gsap.to("form", {
-                duration: 1,
-                delay: 1,
-                ease: "Elastic.easeOut(0.4)",
-                scale: 1
+            Array(2).fill().forEach((button, index) => {
+                gsap.to(`button:nth-child(${index + 1})`, {
+                    duration: 1,
+                    delay: index ? 1.25 : 1,
+                    ease: "Elastic.easeOut(0.1)",
+                    scale: 1
+                });
             });
         };
         handleTransition();
@@ -33,23 +35,23 @@ const ApproveInvoice = ({items, date, cost, members}) => {
         gsap.to(".approve-invoice-wrapper", {
             duration: 0.75,
             ease: "power1.out",
-            opacity: 0.3
+            opacity: 0.5
         });
         gsap.to("i:nth-child(2)", {
             duration: 0.75,
             ease: "power1.out",
             opacity: 1
         });
-        gsap.to("form", {
+        gsap.to("button", {
             duration: 0.75,
-            ease: "Elastic.easeIn(0.4)",
-            scale: 0
+            ease: "power1.in",
+            y: "100vh"
         });
         await new Promise(r => setTimeout(r, 2000));
         gsap.to([".approve-invoice-wrapper", "i:nth-child(2)"], {
             duration: 0.75,
             ease: "Elastic.easeIn(0.4)",
-            y: "-100vh"
+            y: deleteInvoice ? "100vh" : "-100vh"
         });
         await new Promise(r => setTimeout(r, 1500));
         navigate("/dashboard/credit-invoices");
@@ -58,7 +60,9 @@ const ApproveInvoice = ({items, date, cost, members}) => {
     return (
         <div className="approve-invoice-container">
             <div className="approve-invoice-wrapper">
-                <span className="hole"></span>
+                <div className="top-invoice">
+                    <span className="hole"></span>
+                </div>
                 <InvoiceField
                     icon="fa-solid fa-cart-shopping"
                     title="عنوان خرید:"

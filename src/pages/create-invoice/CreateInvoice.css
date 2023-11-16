@@ -9,7 +9,7 @@
 
 .create-invoice-container .my-invoices-btn {
     width: 10rem;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px 0 20px 20px;
     position: absolute;
     z-index: 1;
     top: 1rem;
@@ -27,7 +27,7 @@
     position: relative;
 }
 
-.create-invoice-wrapper * {
+.create-invoice-wrapper > * {
     width: 100%;
 }
 
@@ -43,8 +43,12 @@
 
 .create-invoice-wrapper form label {
     margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
     font-size: 0.9rem;
     font-weight: bold;
+    color: white;
 }
 
 .create-invoice-wrapper form .see-invoice-btn {

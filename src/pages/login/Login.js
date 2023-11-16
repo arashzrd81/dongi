@@ -20,7 +20,7 @@ const Login = () => {
             elements.forEach((element, index) => {
                 gsap.to(element, {
                     duration: 1,
-                    delay: 1.5,
+                    delay: 1,
                     ease: "power1.out",
                     [index === 0 || index === 3 ? "y" : "x"]: 0
                 });
@@ -52,7 +52,7 @@ const Login = () => {
     return (
         <main className="login-container">
             <section className="login-wrapper">
-                <h1>به دنگ و دونگ خوش اومدی</h1>
+                <h1>به دونگی خوش اومدی</h1>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"

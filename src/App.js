@@ -39,6 +39,13 @@ const App = () => {
                     </ProtectedRoute>
                 } />
             </Routes>
+            <div className="bg">
+                {
+                    Array(10).fill().map(() => (
+                        <span className="square"></span>
+                    ))
+                }
+            </div>
             <ToastContainer className="toast" />
         </>
     );
