@@ -48,18 +48,15 @@ const Invoice = ({invoiceType, items, date, cost, members}) => {
         <div ref={invoiceWrapperRef} className="invoice-wrapper">
             <div className="main">
                 <div className="header" onClick={() => setShowDetails(!showDetails)}>
-                    <div>
+                    <div className="title">
                         <i className="fa-solid fa-clipboard-list"></i>
                         <span>{items}</span>
                     </div>
-                    <div>
-                        <span>جزئیات</span>
-                        {
-                            showDetails ?
-                            <i className="fa-solid fa-chevron-up"></i> :
-                            <i className="fa-solid fa-chevron-down"></i>
-                        }
-                    </div>
+                    {
+                        showDetails ?
+                        <i className="fa-solid fa-chevron-up"></i> :
+                        <i className="fa-solid fa-chevron-down"></i>
+                    }
                 </div>
                 <div ref={detailsRef} className="details">
                     <InvoiceField

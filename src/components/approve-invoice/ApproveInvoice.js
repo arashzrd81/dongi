@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
+import Bars from "../bars/Bars";
 import InvoiceField from "../invoice-field/InvoiceField";
 import "./ApproveInvoice.css";
 
@@ -8,7 +9,7 @@ import "./ApproveInvoice.css";
 const ApproveInvoice = ({items, date, cost, members}) => {
 
     const [deleteInvoice, setDeleteInvoice] = useState(false);
-
+    
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const ApproveInvoice = ({items, date, cost, members}) => {
                 ease: "Elastic.easeOut(0.4)",
                 scale: 1
             });
-            Array(2).fill().forEach((button, index) => {
+            Array(2).fill().forEach((x, index) => {
                 gsap.to(`button:nth-child(${index + 1})`, {
                     duration: 1,
                     delay: index ? 1.25 : 1,
@@ -37,7 +38,7 @@ const ApproveInvoice = ({items, date, cost, members}) => {
             ease: "power1.out",
             opacity: 0.5
         });
-        gsap.to("i:nth-child(2)", {
+        gsap.to("i:nth-child(3)", {
             duration: 0.75,
             ease: "power1.out",
             opacity: 1
@@ -47,8 +48,8 @@ const ApproveInvoice = ({items, date, cost, members}) => {
             ease: "power1.in",
             y: "100vh"
         });
-        await new Promise(r => setTimeout(r, 2000));
-        gsap.to([".approve-invoice-wrapper", "i:nth-child(2)"], {
+        await new Promise(r => setTimeout(r, 1000));
+        gsap.to([".approve-invoice-wrapper", "i:nth-child(3)"], {
             duration: 0.75,
             ease: "Elastic.easeIn(0.4)",
             y: deleteInvoice ? "100vh" : "-100vh"
@@ -59,13 +60,14 @@ const ApproveInvoice = ({items, date, cost, members}) => {
 
     return (
         <div className="approve-invoice-container">
+            <Bars page="create" />
             <div className="approve-invoice-wrapper">
                 <div className="top-invoice">
                     <span className="hole"></span>
                 </div>
                 <InvoiceField
                     icon="fa-solid fa-cart-shopping"
-                    title="عنوان خرید:"
+                    title="اقلام خرید:"
                     value={items}
                 />
                 <InvoiceField
@@ -101,11 +103,11 @@ const ApproveInvoice = ({items, date, cost, members}) => {
                 <i className="fa-solid fa-circle-check"></i>
             }
             <form onSubmit={handleSelect}>
-                <button type="submit" autoFocus={true}>
+                <button className="approve-btn" type="submit" autoFocus={true}>
                     <i className="fa-solid fa-clipboard-check"></i>
                     <span>ثبت فاکتور</span>
                 </button>
-                <button type="submit" onClick={() => setDeleteInvoice(true)}>
+                <button className="delete-btn" type="submit" onClick={() => setDeleteInvoice(true)}>
                     <i className="fa-solid fa-trash-can"></i>
                     <span>حذف فاکتور</span>
                 </button>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import Select from "react-select";
+import Bars from "../../components/bars/Bars";
 import ApproveInvoice from "../../components/approve-invoice/ApproveInvoice";
 import { fakeData } from "../../helper/fakeData";
 import { showToast } from "../../helper/showToast";
@@ -14,67 +14,35 @@ const CreateInvoice = () => {
 
     const [count, setCount] = useState(1);
     const [showInvoice, setShowInvoice] = useState(false);
-
     const [items, setItems] = useState("");
     const [date, setDate] = useState("");
     const [cost, setCost] = useState("");
-    const [members, setMembers] = useState();
+    const [members, setMembers] = useState([]);
 
     const dateInputRef = useRef();
     const costInputRef = useRef();
-    const refs = [dateInputRef, costInputRef];
 
-    const navigate = useNavigate();
+    const refs = [dateInputRef, costInputRef];
 
     useEffect(() => {
         const handleTransition = async () => {
-            gsap.to(".my-invoices-btn", {
-                duration: 0.75,
-                ease: "Elastic.easeOut(0.5)",
-                scale: 1
-            });
-            await new Promise(r => setTimeout(r, 750));
             elements.forEach((element, index) => {
                 gsap.to(`form:nth-child(1) ${element}`, {
                     duration: 0.75,
-                    delay: index / 4,
+                    delay: index / 4 + 0.3,
                     ease: "power1.out",
                     transform: "translateX(-100vw)"
                 });
             });
             gsap.to(".continue-btn", {
                 duration: 0.75,
-                delay: 0.5,
+                delay: 0.8,
                 ease: "power1.out",
                 x: 0
             });
         };
         handleTransition();
     }, []);
-
-    const handleNavigate = async () => {
-        gsap.to(".my-invoices-btn", {
-            duration: 0.75,
-            ease: "Elastic.easeIn(0.5)",
-            scale: 0
-        });
-        gsap.to(".continue-btn", {
-            duration: 0.75,
-            ease: "power1.in",
-            y: "100vh"
-        });
-        const temp = [...elements];
-        temp.reverse().forEach((element, index) => {
-            gsap.to(`form:nth-child(${count}) ${element}`, {
-                duration: 0.75,
-                delay: index ? 0.66 : 0.33,
-                ease: "power1.in",
-                y: "100vh"
-            });
-        });
-        await new Promise(r => setTimeout(r, 2000));
-        navigate("/dashboard/credit-invoices");
-    };
 
     const handleContinue = async e => {
         e.preventDefault();
@@ -84,7 +52,7 @@ const CreateInvoice = () => {
             showToast("!لطفا تاریخ معتبر وارد کنید");
         } else if (count === 3 && !/^\d+$/.test(cost)) {
             showToast("!لطفا عدد معتبر وارد کنید");
-        } else if (count === 4 && !members) {
+        } else if (count === 4 && !members.length) {
             showToast("!باید حداقل یک عضو را انتخاب کنید");
         } else {
             elements.forEach((element, index) => {
@@ -96,11 +64,6 @@ const CreateInvoice = () => {
                 });
             });
             if (count === 4) {
-                gsap.to(".my-invoices-btn", {
-                    duration: 0.75,
-                    ease: "Elastic.easeIn(0.5)",
-                    scale: 0
-                });
                 gsap.to(".see-invoice-btn", {
                     duration: 0.75,
                     delay: 0.66,
@@ -145,10 +108,7 @@ const CreateInvoice = () => {
                 showInvoice ?
                 <ApproveInvoice items={items} date={date} cost={cost} members={members} /> :
                 <main className="create-invoice-container">
-                    <button className="my-invoices-btn" onClick={handleNavigate}>
-                        <i className="fa-solid fa-clipboard-list"></i>
-                        <span>فاکتورهای من</span>
-                    </button>
+                    <Bars page="create" />
                     <section className="create-invoice-wrapper">
                         <form onSubmit={handleContinue}>
                             <label>
