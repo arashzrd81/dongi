@@ -23,7 +23,7 @@
     font-weight: bold;
 }
 
-.invoice-wrapper .header > * {
+.invoice-wrapper .header .title {
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
@@ -68,7 +68,7 @@
 }
 
 .invoice-wrapper .share button {
-    width: 150px;
+    width: 7rem;
     border: none;
 }
 

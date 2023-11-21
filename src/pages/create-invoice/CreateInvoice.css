@@ -7,21 +7,6 @@
     overflow: hidden;
 }
 
-.create-invoice-container .my-invoices-btn {
-    width: 10rem;
-    border-radius: 20px 0 20px 20px;
-    position: absolute;
-    z-index: 1;
-    top: 1rem;
-    right: 1.5rem;
-    column-gap: 0.8rem;
-    scale: 0;
-}
-
-.my-invoices-btn i {
-    font-size: 0.95rem;
-}
-
 .create-invoice-container .create-invoice-wrapper {
     width: min(70%, 300px);
     position: relative;
@@ -47,7 +32,6 @@
     align-items: center;
     column-gap: 0.5rem;
     font-size: 0.9rem;
-    font-weight: bold;
     color: white;
 }
 

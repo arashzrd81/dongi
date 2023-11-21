@@ -1,0 +1,50 @@
+.menu-container {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF1A;
+    backdrop-filter: blur(15px);
+    transform: translateX(100vw);
+}
+
+.menu-container .fa-xmark {
+    position: absolute;
+    top: 1.5rem;
+    right: 2.25rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.menu-container .menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 3rem;
+}
+
+.menu-container .menu-wrapper * {
+    font-weight: bold;
+}
+
+.menu-container .menu-wrapper .username {
+    color: #E73213;
+}
+
+.menu-container .menu-wrapper a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/* Media Query */
+
+@media screen and (min-width: 992px) {
+    .menu-container .fa-xmark {
+        cursor: pointer;
+    }
+}

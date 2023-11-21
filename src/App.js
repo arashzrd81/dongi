@@ -41,8 +41,8 @@ const App = () => {
             </Routes>
             <div className="bg">
                 {
-                    Array(10).fill().map(() => (
-                        <span className="square"></span>
+                    Array(10).fill().map((x, index) => (
+                        <span key={index} className="square"></span>
                     ))
                 }
             </div>
