@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/dongi/static/css/main.6a2c3b77.css",
+    "main.js": "/dongi/static/js/main.47d7441b.js",
+    "static/media/IRANSans.ttf": "/dongi/static/media/IRANSans.623768ac2bdc3c1f78df.ttf",
+    "index.html": "/dongi/index.html",
+    "main.6a2c3b77.css.map": "/dongi/static/css/main.6a2c3b77.css.map",
+    "main.47d7441b.js.map": "/dongi/static/js/main.47d7441b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a2c3b77.css",
+    "static/js/main.47d7441b.js"
+  ]
+}
